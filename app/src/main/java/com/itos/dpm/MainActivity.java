@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     EditText pkg_editText, screen_editText, proxyinfo_edit;
     ProxyInfo proxyInfo;
 
-    String[] options = {"安装APP", "卸载APP", "ADB调试"};
+    String[] options = {"安装APP", "卸载APP", "ADB调试", "添加ManagedProfile"};
     Spinner spinner;
     String UserRestriction;
     String selectedItem;
@@ -144,10 +144,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     UserRestriction=UserManager.DISALLOW_INSTALL_APPS;
                 } else if (selectedItem.equals(options[1])) {
                     UserRestriction=UserManager.DISALLOW_UNINSTALL_APPS;
-                } else {
+                } else if (selectedItem.equals(options[2])) {
                     UserRestriction=UserManager.DISALLOW_DEBUGGING_FEATURES;
+                } else if (selectedItem.equals(options[3])) {
+                    UserRestriction=UserManager.DISALLOW_ADD_MANAGED_PROFILE;
                 }
-                // Toast.makeText(MainActivity.this, "选择了：" + selectedItem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "选择了：" + selectedItem, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
